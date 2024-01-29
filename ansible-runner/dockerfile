@@ -3,7 +3,7 @@ FROM ubuntu:22.04
 
 # Update the package list and install Ansible and other dependencies
 RUN apt-get update -y && \
-    apt-get install -y software-properties-common jq
+    apt-get install -y software-properties-common jq curl wget git 
 
 RUN add-apt-repository -y --update ppa:ansible/ansible
 
