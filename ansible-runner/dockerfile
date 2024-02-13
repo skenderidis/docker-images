@@ -2,8 +2,15 @@
 FROM ubuntu:22.04
 
 # Update the package list and install Ansible and other dependencies
+ENV TZ=Asia/Dubai
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 RUN apt-get update -y && \
-    apt-get install -y software-properties-common jq curl wget git 
+    apt-get install -y software-properties-common jq curl git wget
+
+RUN add-apt-repository ppa:rmescandon/yq
+RUN apt-get update
+RUN apt-get install yq -y
 
 RUN add-apt-repository -y --update ppa:ansible/ansible
 
